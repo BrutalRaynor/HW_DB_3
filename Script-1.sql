@@ -36,13 +36,13 @@ CREATE TABLE IF NOT EXISTS Tracks(
 
 CREATE TABLE IF NOT EXISTS Compilations (
 	id SERIAL PRIMARY KEY,
-	collection_name VARCHAR(40) UNIQUE NOT NULL,
+	compilation_name VARCHAR(40) UNIQUE NOT NULL,
 	release_year INTEGER NOT NULL,
 	CHECK (release_year > 1900)
 );
 
 CREATE TABLE IF NOT EXISTS CompilationsTracks (
-	collection_id INTEGER REFERENCES Collections(id),
+	compilation_id INTEGER REFERENCES Compilations(id),
 	tracks_id INTEGER REFERENCES Tracks(id),
 	CONSTRAINT pk_2 PRIMARY KEY (compilation_id, tracks_id)
 );
